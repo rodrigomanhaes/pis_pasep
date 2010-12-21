@@ -41,5 +41,9 @@ describe PisPasep do
   it 'returns formatted NIT number' do
     PisPasep.new('12345678919').to_s.should == '123.45678.91-9'
   end
+
+  it 'formats the number at instantiation' do
+    PisPasep.new('12345678919').numero.should == '123.45678.91-9'
+  end
 end
 

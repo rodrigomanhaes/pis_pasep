@@ -1,6 +1,9 @@
 class PisPasep
+  attr_reader :numero
+
   def initialize(numero)
     @numero = numero
+    @numero = @numero =~ PIS_PASEP_REGEX ? format_number! : @numero
   end
 
   def valido?
@@ -10,13 +13,13 @@ class PisPasep
   end
 
   def to_s
-    formatted_number
+    numero
   end
 
   private
 
   DIGITOS = 11
-  PIS_PASEP_REGEX = /(\d{3})\.?(\d{5})\.?(\d{2})\-?(\d{1})/
+  PIS_PASEP_REGEX = /^(\d{3})\.?(\d{5})\.?(\d{2})\-?(\d{1})$/
 
   def formato_valido?
     return false unless @numero =~ PIS_PASEP_REGEX
@@ -39,9 +42,9 @@ class PisPasep
     dv_encontrado == dv
   end
 
-  def formatted_number
+  def format_number!
     @numero =~ PIS_PASEP_REGEX
-    "#{$1}.#{$2}.#{$3}-#{$4}"
+    @numero = "#{$1}.#{$2}.#{$3}-#{$4}"
   end
 end
 
