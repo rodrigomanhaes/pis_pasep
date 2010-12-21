@@ -45,5 +45,9 @@ describe PisPasep do
   it 'formats the number at instantiation' do
     PisPasep.new('12345678919').numero.should == '123.45678.91-9'
   end
+
+  it 'equals to another pis/pasep with same number' do
+    PisPasep.new('12345678919').should == PisPasep.new('123.45678.91-9')
+  end
 end
 

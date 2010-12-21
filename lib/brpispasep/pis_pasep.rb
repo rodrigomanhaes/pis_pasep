@@ -16,6 +16,10 @@ class PisPasep
     numero
   end
 
+  def ==(outro)
+    self.numero == outro.numero
+  end
+
   private
 
   DIGITOS = 11
