@@ -37,5 +37,9 @@ describe PisPasep do
     # valid = 123.45678.91-9
     PisPasep.new('123.4567.891-9').should_not be_valido
   end
+
+  it 'returns formatted NIT number' do
+    PisPasep.new('12345678919').to_s.should == '123.45678.91-9'
+  end
 end
 

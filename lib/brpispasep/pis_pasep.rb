@@ -10,20 +10,17 @@ class PisPasep
   end
 
   def to_s
-
+    formatted_number
   end
 
   private
 
   DIGITOS = 11
-  PIS_PASEP_REGEX = /\d{3}\.\d{5}\.\d{2}\-\d{1}/
+  PIS_PASEP_REGEX = /(\d{3})\.?(\d{5})\.?(\d{2})\-?(\d{1})/
 
   def formato_valido?
-    num = @numero.gsub(/[^0-9]*/, "")
-    unless @numero =~ PIS_PASEP_REGEX
-      return false if @numero != num
-    end
-    num.size == DIGITOS
+    return false unless @numero =~ PIS_PASEP_REGEX
+    @numero.gsub(/[^0-9]*/, "").size == DIGITOS
   end
 
   def numero_valido?
@@ -40,6 +37,11 @@ class PisPasep
     dv_encontrado = 11 - soma % 11
     dv_encontrado = 0 if dv_encontrado >= 10
     dv_encontrado == dv
+  end
+
+  def formatted_number
+    @numero =~ PIS_PASEP_REGEX
+    "#{$1}.#{$2}.#{$3}-#{$4}"
   end
 end
 
