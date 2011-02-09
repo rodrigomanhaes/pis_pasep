@@ -60,5 +60,30 @@ describe "Using a model attribute as PIS/PASEP number" do
     @funcionario = Funcionario.new(:pasep => "12345678919")
     @funcionario.pasep.numero.should == "123.45678.91-9"
   end
+
+  context 'validation' do
+    before :each do
+      Funcionario.validates_presence_of :pasep
+    end
+
+    describe 'presence' do
+      it 'is invalid with a new pis/pasep number' do
+        funcionario = Funcionario.new
+        funcionario.should_not be_valid
+        funcionario.errors[:pasep].should be_any
+      end
+
+      it "is invalid using an empty string as the pis/pasep number" do
+        funcionario = Funcionario.new(:pasep => "")
+        funcionario.should_not be_valid
+        funcionario.errors[:pasep].should be_any
+      end
+
+      it 'is valid with a healthy pis/pasep' do
+        Funcionario.new(:pasep => '123.45678.91-9').should be_valid
+        Funcionario.new(:pasep => '12345678919').should be_valid
+      end
+    end
+  end
 end
 

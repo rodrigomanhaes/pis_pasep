@@ -27,6 +27,21 @@ module PisPasepActiveRecord
           self.errors.add('#{attribute}', 'numero invalido')
         end
       end
+
+      def #{attribute}=(value)
+        if value.blank?
+          write_attribute('#{attribute}', nil)
+        elsif value.kind_of?(#{eval(klass)})
+          write_attribute('#{attribute}', value.numero)
+        else
+          begin
+            c = #{eval(klass)}.new(value)
+            c.valido? ? write_attribute('#{attribute}', c.numero) : write_attribute('#{attribute}', value)
+          rescue
+            @#{attribute} = value
+          end
+        end
+      end
     """
   end
 end
