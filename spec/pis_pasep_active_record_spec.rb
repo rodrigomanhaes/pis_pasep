@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper'
-require File.dirname(__FILE__) + '/active_record/base_without_table'
+#require File.dirname(__FILE__) + '/active_record/base_without_table'
 
 class Funcionario < ActiveRecord::Base
   usar_como_pis_pasep :pasep
@@ -82,6 +82,25 @@ describe "Using a model attribute as PIS/PASEP number" do
       it 'is valid with a healthy pis/pasep' do
         Funcionario.new(:pasep => '123.45678.91-9').should be_valid
         Funcionario.new(:pasep => '12345678919').should be_valid
+      end
+    end
+
+    describe "uniqueness" do
+      before(:each) do
+        Funcionario.validates_uniqueness_of :pasep
+        f = Funcionario.new(:pasep => "12345678919")
+        f.save
+      end
+
+      it "is invalid if the same value already exists" do
+        funcionario = Funcionario.new(:pasep => "12345678919")
+        funcionario.should_not be_valid
+        funcionario.errors[:pasep].should be_any
+      end
+
+      it "is valid if the value is new" do
+        funcionario = Funcionario.new(:pasep => "47393545608")
+        funcionario.should be_valid
       end
     end
   end
