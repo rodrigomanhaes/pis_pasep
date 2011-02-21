@@ -1,5 +1,4 @@
 require File.dirname(__FILE__) + '/spec_helper'
-#require File.dirname(__FILE__) + '/active_record/base_without_table'
 
 class Funcionario < ActiveRecord::Base
   usar_como_pis_pasep :pasep
