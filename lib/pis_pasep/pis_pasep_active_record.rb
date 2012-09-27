@@ -1,3 +1,5 @@
+require 'active_record'
+
 module PisPasep
   module ActiveRecord
     def usar_como_pis_pasep(*args)
