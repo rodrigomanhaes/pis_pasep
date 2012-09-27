@@ -20,7 +20,7 @@ describe PisPasep do
   end
 
   it 'does not validate with first check digit wrong' do
-    # valid = 24.84380.348-0
+    # valid = 248.438.034-80
     PisPasep.new('24843803470').should_not be_valido
   end
 
@@ -50,4 +50,3 @@ describe PisPasep do
     PisPasep.new('12345678919').should == PisPasep.new('123.45678.91-9')
   end
 end
-

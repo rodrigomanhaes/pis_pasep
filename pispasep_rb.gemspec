@@ -15,7 +15,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{pispasep_rb}
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Easy searching for ActiveRecord applications}
-  s.add_dependency 'activerecord', '~>3.0.0'
+  s.add_dependency 'activerecord', '~>3.0'
+  s.add_development_dependency 'rspec', '~>2.11.0'
+  s.add_development_dependency 'sqlite3', '~>1.3.5'
   s.homepage = 'http://github.com/rodrigomanhaes/pispasep_rb'
 end
-
