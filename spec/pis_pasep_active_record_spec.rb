@@ -24,7 +24,7 @@ describe "Using a model attribute as PIS/PASEP number" do
     @funcionario.should_not be_valid
   end
 
-  it "doesn't saves the model with an invalid number" do
+  it "doesn't save the model with an invalid number" do
     @funcionario.pasep = "sdwewe"
     @funcionario.save.should be_false
   end
@@ -104,4 +104,3 @@ describe "Using a model attribute as PIS/PASEP number" do
     end
   end
 end
-

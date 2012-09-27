@@ -47,4 +47,3 @@ module PisPasepActiveRecord
 end
 
 ActiveRecord::Base.extend PisPasepActiveRecord
-
