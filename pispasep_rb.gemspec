@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = ['rmanhaes@gmail.com']
   s.files = Dir['lib/**/*.rb']
   s.require_paths = ['lib']
-  s.autorequire = 'pispasep_rb'
+  s.autorequire = 'pis_pasep'
   s.rubyforge_project = %q{pispasep_rb}
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Easy searching for ActiveRecord applications}

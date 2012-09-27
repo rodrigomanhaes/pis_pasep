@@ -41,7 +41,7 @@ describe "Using a model attribute as PIS/PASEP number" do
   end
 
   it 'accepts an empty string in the constructor of an instance of pis/pasep' do
-    @funcionario.pasep = PisPasep.new("")
+    @funcionario.pasep = PisPasep::Base.new("")
     @funcionario.should be_valid
   end
 
@@ -51,8 +51,8 @@ describe "Using a model attribute as PIS/PASEP number" do
   end
 
   it "accepts an instance of PisPasep" do
-    @funcionario.pasep = PisPasep.new("12345678919")
-    @funcionario.pasep.should be_an_instance_of(PisPasep)
+    @funcionario.pasep = PisPasep::Base.new("12345678919")
+    @funcionario.pasep.should be_an_instance_of(PisPasep::Base)
   end
 
   it "is able to receive parameters at initialization" do
