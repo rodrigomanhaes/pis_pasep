@@ -1,13 +1,12 @@
 class CreateTestingStructure < ActiveRecord::Migration
   def self.up
-    create_table :funcionarios do |t|
-      t.string :nome
+    create_table :employees do |t|
+      t.string :name
       t.string :pasep
     end
   end
 
   def self.down
-    drop_table :funcionarios
+    drop_table :employees
   end
 end
-

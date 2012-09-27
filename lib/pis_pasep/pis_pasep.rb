@@ -1,55 +1,55 @@
 module PisPasep
   class Base
-    attr_reader :numero
+    attr_reader :number
 
-    def initialize(numero)
-      @numero = numero
-      @numero = @numero =~ PIS_PASEP_REGEX ? format_number! : @numero
+    def initialize(number)
+      @number = number
+      @number = @number =~ PIS_PASEP_REGEX ? format_number! : @number
     end
 
-    def valido?
-      return true if @numero.nil?
-      return false unless formato_valido?
-      numero_valido?
+    def valid?
+      return true if @number.nil?
+      return false unless format_valid?
+      number_valid?
     end
 
     def to_s
-      numero
+      number
     end
 
     def ==(outro)
-      self.numero == outro.numero
+      self.number == outro.number
     end
 
     private
 
-    DIGITOS = 11
+    DIGITS = 11
     PIS_PASEP_REGEX = /^(\d{3})\.?(\d{5})\.?(\d{2})\-?(\d{1})$/
 
-    def formato_valido?
-      return false unless @numero =~ PIS_PASEP_REGEX
-      @numero.gsub(/[^0-9]*/, "").size == DIGITOS
+    def format_valid?
+      return false unless @number =~ PIS_PASEP_REGEX
+      @number.gsub(/[^0-9]*/, "").size == DIGITS
     end
 
-    def numero_valido?
-      num = @numero.gsub(/[^0-9]*/, "")
+    def number_valid?
+      num = @number.gsub(/[^0-9]*/, "")
       dv = num[-1].to_i
-      soma = 0
-      coeficiente = 2
+      sum = 0
+      coefficient = 2
       (num.size - 2).downto(0) do |i|
         digit = num[i].to_i
-        soma += digit * coeficiente
-        coeficiente += 1
-        coeficiente = 2 if coeficiente > 9
+        sum += digit * coefficient
+        coefficient += 1
+        coefficient = 2 if coefficient > 9
       end
-      dv_encontrado = 11 - soma % 11
-      dv_encontrado = 0 if dv_encontrado >= 10
-      dv_encontrado == dv
+      found_checksum = 11 - sum % 11
+      found_checksum = 0 if found_checksum >= 10
+      found_checksum == dv
     end
 
     def format_number!
-      @numero =~ PIS_PASEP_REGEX
-      @numero = "#{$1}.#{$2}.#{$3}-#{$4}"
+      @number =~ PIS_PASEP_REGEX
+      @number = "#{$1}.#{$2}.#{$3}-#{$4}"
     end
   end
 end
