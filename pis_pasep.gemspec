@@ -2,14 +2,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pis_pasep}
-  s.version = '0.0.1'
+  s.version = '1.0.0'
 
   s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to? :required_rubygems_version=
   s.authors = ['Rodrigo Manhães']
-  s.date = %{2011-02-09}
+  s.date = %{2012-09-27}
   s.description = %q{PIS/PASEP validations for pure Ruby and ActiveRecord apps}
   s.email = ['rmanhaes@gmail.com']
-  s.files = Dir['lib/**/*.rb']
+  s.files = Dir.glob('lib/**/*.rb') + %w(README.rst LICENSE.txt)
   s.require_paths = ['lib']
   s.autorequire = 'pis_pasep'
   s.rubyforge_project = %q{pis_pasep}

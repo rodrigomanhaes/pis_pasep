@@ -1,0 +1,9 @@
+pis_pasep
+=========
+
+2012-09-27 Rodrigo Manhães <rmanhaes@gmail.com>
+1.0.0 (first version! \o/)
+
+* Features
+  - PIS/PASEP validation
+  - ActiveRecord integration
