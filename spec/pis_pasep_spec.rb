@@ -11,6 +11,10 @@ describe PisPasep do
     numeros.each.each {|n| PisPasep.new(n).should_not be_valido }
   end
 
+  it 'validates a nil number' do
+    PisPasep.new(nil).should be_valido
+  end
+
   it 'does not validate with less digits than allowed' do
     PisPasep.new('1234567891').should_not be_valido
   end
